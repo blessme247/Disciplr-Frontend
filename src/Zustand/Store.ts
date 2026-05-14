@@ -12,7 +12,7 @@ type notificationsType = {
 export const useNotification = create<notificationsType>((set) => ({
   notification: n,
   setNotification: (value: typeof n) =>
-    set((_state) => ({ notification: value })),
+    set(() => ({ notification: value })),
 }));
 
 

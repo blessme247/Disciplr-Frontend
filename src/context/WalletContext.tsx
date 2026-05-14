@@ -71,9 +71,10 @@ export function WalletProvider({ children }: { children: ReactNode }) {
             } else {
                 setError('Wallet access denied.');
             }
-        } catch (err: any) {
+        } catch (err: unknown) {
             console.error('Connection error', err);
-            setError(err?.message || 'Failed to connect wallet. Make sure Freighter is installed and unlocked.');
+            const message = err instanceof Error ? err.message : undefined;
+            setError(message || 'Failed to connect wallet. Make sure Freighter is installed and unlocked.');
         } finally {
             setIsConnecting(false);
         }

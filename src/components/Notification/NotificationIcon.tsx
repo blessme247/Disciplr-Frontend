@@ -53,15 +53,15 @@ export default function NotificationIcon() {
     );
   };
 
-  const containerRef = useRef<any>(null); // 1. Create a reference to the container
+  const containerRef = useRef<HTMLDivElement | null>(null); // 1. Create a reference to the container
 
   useEffect(() => {
     // 2. Function to handle clicks
-    const handleClickOutside = (event: any) => {
+    const handleClickOutside = (event: MouseEvent) => {
       // If the clicked element is NOT inside our container, close it
       if (
         containerRef.current &&
-        !containerRef.current.contains(event.target)
+        !containerRef.current.contains(event.target as Node)
       ) {
         setIsOpen(false);
       }

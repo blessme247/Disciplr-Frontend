@@ -1,5 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
-import { AnimatePresence, motion } from 'framer-motion'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { WalletProvider } from './context/WalletContext'
 import { ThemeProvider } from './context/ThemeContext'
 import Layout from './components/Layout'
@@ -9,7 +8,8 @@ import Home from './pages/Home'
 import Dashboard from './pages/Dashboard'
 import Vaults from './pages/Vaults'
 import CreateVault from './pages/CreateVault'
-import Analytics from './pages/Analytics'
+import VaultDetail from './pages/VaultDetail'
+import VaultTransactions from './pages/VaultTransactions'
 
 
 // New Verifier Page Imports
