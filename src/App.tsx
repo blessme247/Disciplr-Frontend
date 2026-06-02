@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { WalletProvider } from './context/WalletContext'
 import { ThemeProvider } from './context/ThemeContext'
@@ -10,6 +11,8 @@ import Vaults from './pages/Vaults'
 import CreateVault from './pages/CreateVault'
 import VaultDetail from './pages/VaultDetail'
 import VaultTransactions from './pages/VaultTransactions'
+
+const Analytics = lazy(() => import('./pages/Analytics'))
 
 
 // New Verifier Page Imports
@@ -25,21 +28,24 @@ export default function App() {
         <BrowserRouter>
           {/* Layout handles the global wrapper, header, and sidebar */}
           <Layout>
-            <Routes>
-              {/* Existing Routes */}
-              <Route path="/" element={<Home />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/vaults" element={<Vaults />} />
-              <Route path="/vaults/create" element={<CreateVault />} />
-              <Route path="/vaults/:id" element={<VaultDetail />} />
-              <Route path="/vaults/:id/transactions" element={<VaultTransactions />} />
-              
-              {/* New Verifier Routes */}
-              <Route path="/verifier" element={<VerifierDashboard />} />
-              <Route path="/verifier/queue" element={<PendingValidations />} />
-              <Route path="/verifier/queue/:vaultId" element={<ValidationDetail />} />
-              <Route path="/verifier/history" element={<ValidationHistory />} />
-            </Routes>
+            <Suspense fallback={<div style={{ color: 'var(--muted)', padding: '1rem' }}>Loading analytics...</div>}>
+              <Routes>
+                {/* Existing Routes */}
+                <Route path="/" element={<Home />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/analytics" element={<Analytics />} />
+                <Route path="/vaults" element={<Vaults />} />
+                <Route path="/vaults/create" element={<CreateVault />} />
+                <Route path="/vaults/:id" element={<VaultDetail />} />
+                <Route path="/vaults/:id/transactions" element={<VaultTransactions />} />
+
+                {/* New Verifier Routes */}
+                <Route path="/verifier" element={<VerifierDashboard />} />
+                <Route path="/verifier/queue" element={<PendingValidations />} />
+                <Route path="/verifier/queue/:vaultId" element={<ValidationDetail />} />
+                <Route path="/verifier/history" element={<ValidationHistory />} />
+              </Routes>
+            </Suspense>
           </Layout>
         </BrowserRouter>
       </WalletProvider>
