@@ -1,6 +1,7 @@
 import { useState, useMemo, useCallback, memo } from "react";
 import { windowRange, WINDOW_THRESHOLD } from "../utils/windowRange";
 import { toCsv, downloadCsv } from "../utils/csv";
+import { AddressDisplay } from "../components/AddressDisplay";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 type TxType = "create" | "validate" | "release" | "redirect";
@@ -787,10 +788,10 @@ function TxModal({ tx, onClose, onCopy, copiedId }: TxModalProps) {
             </div>
           </Field>
           <Field label="From">
-            <span className="vt-mono">{tx.from}</span>
+            <AddressDisplay address={tx.from} />
           </Field>
           <Field label="To">
-            <span className="vt-mono">{tx.to}</span>
+            <AddressDisplay address={tx.to} />
           </Field>
           <div className="vt-modal-row2">
             <Field label="Amount">
