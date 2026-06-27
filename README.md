@@ -149,6 +149,21 @@ For targeted frontend checks during development, run Vitest directly:
 npx vitest run src/pages/__tests__/Vaults.test.tsx
 ```
 
+### Coverage
+
+Coverage thresholds are enforced in CI via `vitest.config.ts`:
+`statements: 50`, `branches: 80`, `functions: 65`, `lines: 50`. If new
+code drops coverage below these floors, `npm test` exits with a
+non-zero code and the CI run fails. To check current coverage locally,
+run:
+
+```bash
+npm test
+```
+
+The HTML report is written to `coverage/` — open `coverage/index.html`
+in a browser for a detailed view.
+
 Design-system tests use Jest:
 
 ```bash
