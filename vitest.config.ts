@@ -19,7 +19,14 @@ export default defineConfig({
       ['src/**/*.test.ts', 'node'],
     ],
     coverage: {
-      reporter: ['text', 'html'],
+      reporter: ['text', 'html', 'json-summary'],
+      reportsDirectory: './coverage',
+      thresholds: {
+        statements: 50,
+        branches: 80,
+        functions: 65,
+        lines: 50,
+      },
     },
     exclude: [...configDefaults.exclude, 'node_modules', 'dist'],
   },
