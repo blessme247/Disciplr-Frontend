@@ -282,6 +282,9 @@ describe('VaultTransactions', () => {
       expect(screen.queryByRole('table', { name: /Pending transactions/i })).not.toBeInTheDocument();
       expect(screen.queryByRole('table', { name: /Failed transactions/i })).not.toBeInTheDocument();
       expect(screen.getByRole('table', { name: /Confirmed transactions/i })).toBeInTheDocument();
+      expect(screen.queryByText('Pending')).not.toBeInTheDocument();
+      expect(screen.queryByText('Failed')).not.toBeInTheDocument();
+      expect(screen.getAllByText('Confirmed').length).toBeGreaterThan(0);
     });
 
     it('hash search filters the list to matching transactions only', () => {
