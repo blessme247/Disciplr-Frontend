@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Text } from '../components/Text';
 import VaultCard from '../components/VaultCard';
-
-// ── Types ─────────────────────────────────────────────────────────────────────
-type VaultStatus = "active" | "pending_validation" | "completed" | "failed";
+import type { VaultStatus } from '../types/vault';
 
 interface VaultPreview {
   id: string;
@@ -137,6 +135,11 @@ const STATUS_CFG: Record<
     label: "Failed",
     color: "var(--danger)",
     bg: "rgba(239,68,68,0.1)",
+  },
+  cancelled: {
+    label: "Cancelled",
+    color: "var(--muted)",
+    bg: "rgba(156,163,175,0.1)",
   },
 };
 

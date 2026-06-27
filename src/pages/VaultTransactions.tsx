@@ -1,10 +1,8 @@
 import { useState, useMemo, useCallback, memo } from "react";
 import { windowRange, WINDOW_THRESHOLD } from "../utils/windowRange";
+import type { TxType, TxStatus } from "../types/vault";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
-type TxType = "create" | "validate" | "release" | "redirect";
-type TxStatus = "confirmed" | "pending" | "failed";
-
 interface Transaction {
   id: string;
   type: TxType;

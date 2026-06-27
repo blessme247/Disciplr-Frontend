@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Text } from '../components/Text'
-
-type VaultStatus = 'active' | 'completed' | 'failed' | 'cancelled' | 'pending_validation'
+import type { VaultStatus } from '../types/vault'
 
 const MOCK_VAULTS = [
   { id: '1', name: 'Alpha Vault',   amount: 12500,  currency: 'USDC', status: 'active' as VaultStatus,    deadline: '2024-07-15T10:00:00Z' },
